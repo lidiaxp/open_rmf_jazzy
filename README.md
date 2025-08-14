@@ -88,7 +88,7 @@ ros2 run rmf_building_map_tools building_map_generator navgraph_visualization bu
 
 ## 📂 7. Copy World to RMF Maps
 
-Do **every time** before running:
+Do **every time** you reopen the docker:
 
 ```bash
 source install/setup.bash
