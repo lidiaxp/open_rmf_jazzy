@@ -135,3 +135,6 @@ description:
 ## 📚 References
 
 - [RMF Building Map Creation Tutorial (YouTube)](https://www.youtube.com/watch?v=POLjIOs2MaM&t=968s)
+
+- [Google Docs Tutorial](https://docs.google.com/document/d/10Vif_sw5_8SZr7kzbUPEd8Tp6-2p9BgeIjz_cjSJ7so/edit?tab=t.0)
+ 
