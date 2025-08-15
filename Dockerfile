@@ -47,7 +47,9 @@ RUN apt-get update && apt-get install -y \
     ros-${ROS_DISTRO}-vision-msgs \
     ros-${ROS_DISTRO}-ament-cmake-catch2 \
     ros-${ROS_DISTRO}-tf-transformations \
-    ros-${ROS_DISTRO}-ros-gz \
+    # ros-${ROS_DISTRO}-ros-gz \
+    # ros-${ROS_DISTRO}-rmf-building-sim-gz-plugins \
+    # ros-${ROS_DISTRO}-rmf-robot-sim-gz-plugins \
     liburdfdom-dev \
     libwebsocketpp-dev \
     # ros-${ROS_DISTRO}-rmf-building-sim-common \
@@ -76,6 +78,15 @@ RUN pip3 install --no-cache-dir --break-system-packages --no-deps --ignore-insta
     pycdr2 \
     rosbags \
     nudged
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    mesa-utils libgl1-mesa-dri libglx-mesa0 libglu1-mesa \
+    libegl1 libgbm1 \
+    mesa-vulkan-drivers libvulkan1 \
+    xvfb xauth x11-apps \
+    ros-jazzy-rmf-building-sim-gz-plugins \
+    ros-jazzy-rmf-robot-sim-gz-plugins && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/rmf_ws/src
 # RUN git clone --depth=1 https://github.com/open-rmf/rmf_demos.git -b 2.0.3

@@ -7,7 +7,11 @@ This guide explains how to create a building map in **Traffic Editor**, export i
 ## 📦 1. Environment Setup
 
 ```bash
+source /opt/ros/jazzy/setup.bash
 source install/setup.bash
+
+export GZ_SIM_SYSTEM_PLUGIN_PATH=/opt/ros/jazzy/lib/rmf_robot_sim_gz_plugins:$GZ_SIM_SYSTEM_PLUGIN_PATH
+export GZ_GUI_PLUGIN_PATH=/opt/ros/jazzy/lib/rmf_building_sim_gz_plugins:$GZ_GUI_PLUGIN_PATH
 ```
 
 ---
@@ -50,7 +54,7 @@ source install/setup.bash
 Run the following to generate the Gazebo world:
 
 ```bash
-ros2 run rmf_building_map_tools building_map_generator gazebo     building.yaml     world_dc_l2.world     ~/.gazebo/models
+ros2 run rmf_building_map_tools building_map_generator gazebo dc_l2.building.yaml world_dc_l2.world ~/.gazebo/models
 ```
 
 ---
@@ -137,4 +141,3 @@ description:
 - [RMF Building Map Creation Tutorial (YouTube)](https://www.youtube.com/watch?v=POLjIOs2MaM&t=968s)
 
 - [Google Docs Tutorial](https://docs.google.com/document/d/10Vif_sw5_8SZr7kzbUPEd8Tp6-2p9BgeIjz_cjSJ7so/edit?tab=t.0)
- 
