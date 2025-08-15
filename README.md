@@ -9,9 +9,6 @@ This guide explains how to create a building map in **Traffic Editor**, export i
 ```bash
 source /opt/ros/jazzy/setup.bash
 source install/setup.bash
-
-export GZ_SIM_SYSTEM_PLUGIN_PATH=/opt/ros/jazzy/lib/rmf_robot_sim_gz_plugins:$GZ_SIM_SYSTEM_PLUGIN_PATH
-export GZ_GUI_PLUGIN_PATH=/opt/ros/jazzy/lib/rmf_building_sim_gz_plugins:$GZ_GUI_PLUGIN_PATH
 ```
 
 ---
