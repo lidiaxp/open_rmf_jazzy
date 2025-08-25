@@ -62,11 +62,11 @@ ros2 run rmf_building_map_tools building_map_generator gazebo dc_l2.building.yam
    ```bash
    cp -r /root/.gazebo/models/building_dc_l2/meshes ./meshes
    ```
-2. Save the new world as:
+<!-- 2. Save the new world as:
    ```
    world_dc_l2_inline.world
    ```
-   (with the `model.sdf` content embedded).
+   (with the `model.sdf` content embedded). -->
 
 ---
 
@@ -81,8 +81,8 @@ gz sim world_dc_l2.world
 ## 🗺️ 6. Generate Navigation Files
 
 ```bash
-ros2 run rmf_building_map_tools building_map_generator nav building.yaml maps/
-ros2 run rmf_building_map_tools building_map_generator navgraph_visualization building.yaml maps/
+ros2 run rmf_building_map_tools building_map_generator nav dc_l2.building.yaml maps/
+ros2 run rmf_building_map_tools building_map_generator navgraph_visualization dc_l2.building.yaml maps/
 ```
 
 ---

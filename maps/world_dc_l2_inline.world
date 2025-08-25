@@ -88,11 +88,24 @@
       </link>
     </model>
 
+    <plugin name="rmf_robot" filename="librmf_robot_sim_gz_plugins.so">
+      <ros2>
+        <namespace>tinyRobot1</namespace>
+      </ros2>
+      <update_rate>10</update_rate>
+    </plugin>
+
     <include>
+      <name>tinyRobot1</name>
+      <uri>model://TinyRobot</uri>
+      <pose>20.868068228632303 -31.51393164358252 0 0 0 0</pose>
+    </include>
+
+    <!-- <include>
     <name>tinyRobot</name>
       <uri>model://TinyRobot</uri>
       <pose>14 -31 0 0 0 0</pose>
-    </include>
+    </include> -->
 
   </world>
 </sdf>
