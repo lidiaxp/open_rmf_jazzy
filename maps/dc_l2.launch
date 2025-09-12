@@ -1,4 +1,4 @@
-<?xml version='1.0' ?>
+<!-- <?xml version='1.0' ?>
 
 <launch>
   <arg name="use_sim_time" default="true"/>
@@ -29,4 +29,57 @@
   </include>
 
 </launch>
+ -->
 
+<!-- <?xml version='1.0' ?>
+
+<launch>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="failover_mode" default="false"/>
+  <arg name="gazebo_version" default='8'/>
+  <arg name="sim_update_rate" default='100'/>
+
+  <include file="$(find-pkg-share rmf_demos)/common.launch.xml">
+    <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    <arg name="viz_config_file" value ="/home/ros/rmf_ws/custom_maps/building.rviz"/>
+    <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/dc_l2.building.yaml"/>
+  </include>
+
+  <group>
+    <include file="$(find-pkg-share rmf_demos_fleet_adapter)/launch/fleet_adapter.launch.xml">
+      <arg name="use_sim_time" value="$(var use_sim_time)"/>
+      <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0.yaml" />
+      <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/tinyRobot_config.yaml"/>
+    </include>
+  </group>
+
+  <include file="/home/ros/rmf_ws/custom_maps/simulation.launch.xml">
+    <arg name="map_name" value="world_dc_l2_inline" />
+    <arg name="gazebo_version" value="$(var gazebo_version)" />
+    <arg name="sim_update_rate" value="$(var sim_update_rate)"/>
+  </include>
+
+</launch> -->
+
+<?xml version='1.0' ?>
+
+<launch>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="failover_mode" default="false"/>
+  <arg name="gazebo_version" default='8'/>
+  <arg name="sim_update_rate" default='100'/>
+
+  <!-- Common launch -->
+  <include file="$(find-pkg-share rmf_demos)/office.launch.xml">
+    <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    <arg name="failover_mode" value="$(var failover_mode)"/>
+  </include>
+
+  <!-- Simulation launch -->
+  <include file="$(find-pkg-share rmf_demos_gz)/simulation.launch.xml">
+    <arg name="map_name" value="office" />
+    <arg name="gazebo_version" value="$(var gazebo_version)" />
+    <arg name="sim_update_rate" value="$(var sim_update_rate)"/>
+  </include>
+
+</launch>

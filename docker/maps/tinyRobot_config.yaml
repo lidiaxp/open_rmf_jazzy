@@ -29,27 +29,14 @@ rmf_fleet:
   task_capabilities: # Specify the types of RMF Tasks that robots in this fleet are capable of performing
     loop: True
     delivery: True
-    patrol: True
   actions: ["teleop"]
   finishing_request: "park" # [park, charge, nothing]
   responsive_wait: True # Should responsive wait be on/off for the whole fleet by default? False if not specified.
   reassign_task_interval: 120 # seconds, specify how often a task reassignment should be triggered in the fleet
   robots:
-    # name: tinyRobot
     tinyRobot1:
-      charger: "dc_door"
-      robot_name: "tinyRobot1"
-      robot_state_update_frequency: 1.0
-      start:
-        # level: dc_l2
-        waypoint: dc_door
-  # robots:
-  #   tinyRobot1:
-  #       charger: "tinyRobot1_charger"
-  #       responsive_wait: False # Should responsive wait be on/off for this specific robot? Overrides the fleet-wide setting.
-  #   tinyRobot2:
-  #       charger: "tinyRobot2_charger"
-  #       # No mention of responsive_wait means the fleet-wide setting will be used
+        charger: "dc_door"
+        responsive_wait: False # Should responsive wait be on/off for this specific robot? Overrides the fleet-wide setting.
 
 fleet_manager:
   ip: "127.0.0.1"

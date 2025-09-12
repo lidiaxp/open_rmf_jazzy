@@ -1,0 +1,20 @@
+<?xml version='1.0' ?>
+
+<launch>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="failover_mode" default="false"/>
+  <arg name="gazebo_version" default='8'/>
+  <arg name="sim_update_rate" default='100'/>
+
+  <include file="/home/ros/rmf_ws/custom_maps/dc_l2_detail.launch.xml">
+    <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    <arg name="failover_mode" value="$(var failover_mode)"/>
+  </include>
+  
+  <include file="/home/ros/rmf_ws/custom_maps/custom_simulation.launch.xml">
+    <arg name="map_name" value="world_dc_l2_inline" />
+    <arg name="gazebo_version" value="$(var gazebo_version)" />
+    <arg name="sim_update_rate" value="$(var sim_update_rate)"/>
+  </include>
+
+</launch>

@@ -79,6 +79,28 @@ RUN pip3 install --no-cache-dir --break-system-packages --no-deps --ignore-insta
     rosbags \
     nudged
 
+# # Sistema e ROS
+# RUN apt-get update && apt-get install -y \
+#     ros-dev-tools \
+#     ros-$ROS_DISTRO-rmw-cyclonedds-cpp \
+#     python3-pip \
+#  && rm -rf /var/lib/apt/lists/*
+
+# # Python libs (sem deps automáticas, instalando o necessário explicitamente)
+# RUN pip3 install --no-cache-dir --break-system-packages --no-deps \
+#         "starlette<0.48.0,>=0.40.0" anyio sniffio h11 \
+#     && pip3 install --no-cache-dir --break-system-packages --no-deps \
+#         "pydantic>=1.10,<2.0" \
+#     && pip3 install --no-cache-dir --break-system-packages --no-deps \
+#         # stack do Flask-SocketIO (evita baixar deps automáticas)
+#         "Flask>=2.2,<3.0" "Werkzeug>=2.2,<3.0" "Jinja2==3.1.4" \
+#         "python-socketio>=5.11,<6" "python-engineio>=4.9,<5" \
+#         "flask-socketio" \
+#     && pip3 install --no-cache-dir --break-system-packages --no-deps \
+#         # datamodel-code-generator + deps que ele importa em runtime
+#         "datamodel_code_generator" \
+#         "black==24.8.0" "isort==5.13.2" "inflect==7.3.1" "stringcase==1.2.0" 
+        
 RUN apt-get update && apt-get install -y --no-install-recommends \
     mesa-utils libgl1-mesa-dri libglx-mesa0 libglu1-mesa \
     libegl1 libgbm1 \
@@ -93,26 +115,27 @@ WORKDIR /root/rmf_ws/src
 # RUN git clone --depth=1 https://github.com/open-rmf/free_fleet.git 
 # RUN git clone --depth=1 https://github.com/ros-planning/navigation2.git -b $ROS_DISTRO 
 # RUN git clone --depth=1 https://github.com/ros-controls/ros2_control.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_ros2.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_internal_msgs.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_battery.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_visualization.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_visualization_msgs.git -b $ROS_DISTRO
-RUN git clone https://github.com/open-rmf/rmf_demos.git -b $ROS_DISTRO
 # RUN git clone https://github.com/open-rmf/rmf_api_msgs.git 
-RUN git clone https://github.com/open-rmf/pybind11_json_vendor.git -b $ROS_DISTRO 
-# RUN git clone https://github.com/open-rmf/rmf_simulation.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_task.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/menge_vendor.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_traffic.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_traffic_editor.git -b $ROS_DISTRO 
-RUN git clone https://github.com/ament/ament_cmake.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_utils.git -b $ROS_DISTRO 
-RUN git clone https://github.com/open-rmf/rmf_api_msgs.git -b $ROS_DISTRO 
 # RUN git clone --recursive https://github.com/chvmp/champ -b ros2 
 # RUN git clone https://github.com/chvmp/champ_teleop -b ros2
 # RUN git clone -b humble https://github.com/ros-simulation/gazebo_ros2_control.git
+
+# RUN git clone https://github.com/open-rmf/rmf_ros2.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_demos.git -b $ROS_DISTRO
+# RUN git clone https://github.com/open-rmf/rmf_traffic.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_utils.git -b $ROS_DISTRO
+# RUN git clone https://github.com/open-rmf/rmf_internal_msgs.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_api_msgs.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_battery.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_task.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/pybind11_json_vendor.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/ament/ament_cmake.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_visualization.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_visualization_msgs.git -b $ROS_DISTRO
+# RUN git clone https://github.com/open-rmf/rmf_simulation.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/menge_vendor.git -b $ROS_DISTRO 
+# RUN git clone https://github.com/open-rmf/rmf_traffic_editor.git -b $ROS_DISTRO 
 
 RUN pip3 install --break-system-packages --no-deps --ignore-installed --upgrade pip && \
 pip3 uninstall --break-system-packages -y Flask Flask-SocketIO python-engineio python-socketio Werkzeug && \
@@ -146,6 +169,8 @@ RUN . /opt/ros/$ROS_DISTRO/setup.sh \
     && export CC=gcc  \
     && colcon build --symlink-install
 
+# RUN . /root/rmf_ws/install/setup.bash
+
 # . /opt/ros/$ROS_DISTRO/setup.sh && export CXX=g++ && export CC=gcc && colcon build --symlink-install
 
 # RUN chmod +x /root/rmf_ws/install/free_fleet_adapter/lib/free_fleet_adapter/fleet_adapter.py
@@ -177,3 +202,6 @@ WORKDIR /root/rmf_ws
 
 ENTRYPOINT ["/bin/bash", "-c"]
 CMD ["source /root/rmf_ws/install/setup.bash && ros2 launch rmf_demos_gz office.launch.xml headless:=1"]
+
+# mkdir -p /root/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Open-RMF
+# ln -s ../TinyRobot /root/rmf_ws/install/rmf_demos_assets/share/rmf_demos_assets/models/Open-RMF/TinyRobot

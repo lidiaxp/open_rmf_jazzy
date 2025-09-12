@@ -1,0 +1,13 @@
+fleet_name: tinyRobot
+limits:
+  linear: [0.7, 0.5]
+  angular: [0.3, 1.5]
+reversible: true
+profile:
+  footprint: [0.5, 0.5]
+  vicinity: [1.5, 1.5]
+
+robots:
+  - name: tinyRobot1
+    start:
+      waypoint: dc_door

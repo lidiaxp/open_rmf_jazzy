@@ -1,0 +1,20 @@
+<?xml version='1.0' ?>
+
+<launch>
+  <arg name="use_sim_time" default="false"/>
+
+  <include file="$(find-pkg-share rmf_demos)/common.launch.xml">
+    <arg name="use_sim_time" value="$(var use_sim_time)"/>
+    <arg name="viz_config_file" value ="/home/ros/rmf_ws/custom_maps/building.rviz"/>
+    <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/dc_l2.building.yaml"/>
+  </include>
+
+  <group>
+    <include file="$(find-pkg-share rmf_demos_fleet_adapter)/launch/fleet_adapter.launch.xml">
+      <arg name="use_sim_time" value="$(var use_sim_time)"/>
+      <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0.yaml" />
+      <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/tinyRobot_config.yaml"/>
+    </include>
+  </group>
+
+</launch>
