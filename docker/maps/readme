@@ -1,11 +1,19 @@
-Execute docker:
+# Build docker:
+- Build all services (recommended)
+docker compose build
+
+- Or build specific services
+docker compose build ros-gazebo-base
+docker compose build openrmf
+
+# Execute docker:
 docker rm -f my-openrmf && bash run.sh
 
-Open other terminal:
+# Open other terminal:
 docker exec -it my-openrmf /bin/bash
 
-Run dc l2 (inside rmf_ws/custom_maps):
+# Run dc l2 (inside rmf_ws/custom_maps):
 ros2 launch dc_l2.launch
 
-Run a sample  to move the robot:
+# Run a sample  to move the robot:
 ros2 run rmf_demos_tasks dispatch_patrol -p dc_door dc_end -n 1 --use_sim_time
