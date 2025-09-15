@@ -146,3 +146,9 @@ description:
 ros2 run xacro xacro /home/ros/rmf_ws/src/laris_robot/description/robot.urdf.xacro -o /home/ros/robot_laris.urdf
 sudo gz sdf -p /home/ros/robot_laris.urdf > /home/ros/rmf_ws/custom_maps/Laris_robot_model/laris_robot.sdf
 ```
+
+## Quick Test
+
+```
+ros2 run rmf_demos_tasks dispatch_patrol -p dc_door dc_end -n 1 --use_sim_time
+```
