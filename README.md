@@ -138,3 +138,11 @@ description:
 - [RMF Building Map Creation Tutorial (YouTube)](https://www.youtube.com/watch?v=POLjIOs2MaM&t=968s)
 
 - [Google Docs Tutorial](https://docs.google.com/document/d/10Vif_sw5_8SZr7kzbUPEd8Tp6-2p9BgeIjz_cjSJ7so/edit?tab=t.0)
+
+
+## Gerar o sdf do robô do DC a partir do xacro
+
+```
+ros2 run xacro xacro /home/ros/rmf_ws/src/laris_robot/description/robot.urdf.xacro -o /home/ros/robot_laris.urdf
+sudo gz sdf -p /home/ros/robot_laris.urdf > /home/ros/rmf_ws/custom_maps/Laris_robot_model/laris_robot.sdf
+```
