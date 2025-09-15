@@ -9,11 +9,27 @@
     <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/dc_l2.building.yaml"/>
   </include>
 
+  <!-- <let name="laris_description"
+       value="$(command 'xacro $(find-pkg-share laris_robot)/description/robot.urdf.xacro')" />
+
+  <node pkg="robot_state_publisher" exec="robot_state_publisher" name="rsp" output="screen">
+    <param name="use_sim_time" value="$(var use_sim_time)"/>
+    <param name="robot_description" value="$(var laris_description)" />
+  </node>
+
+  <node pkg="ros_gz_sim" exec="create" name="spawn_laris" output="screen"
+        args="-name laris1 -x 14.372152667357495 -y -31.51393164358252 -z 0 
+              -Y 0 -topic robot_description"/> -->
+
   <group>
     <include file="$(find-pkg-share rmf_demos_fleet_adapter)/launch/fleet_adapter.launch.xml">
       <arg name="use_sim_time" value="$(var use_sim_time)"/>
-      <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0.yaml" />
-      <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/tinyRobot_config.yaml"/>
+      <!-- <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0_tinyRobot.yaml" />
+      <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/tinyRobot_config.yaml"/> -->
+      <!-- <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0_limo.yaml" />
+      <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/limo_config.yaml"/> -->
+      <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0_laris.yaml" />
+      <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/laris_config.yaml"/>
     </include>
   </group>
 

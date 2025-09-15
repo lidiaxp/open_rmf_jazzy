@@ -90,14 +90,14 @@
 
     <plugin name="rmf_robot" filename="librmf_robot_sim_gz_plugins.so">
       <ros2>
-        <namespace>tinyRobot1</namespace>
+        <namespace>laris1</namespace>
       </ros2>
       <update_rate>10</update_rate>
     </plugin>
 
     <include>
-      <name>tinyRobot1</name>
-      <uri>model://TinyRobot</uri>
+      <name>laris1</name>
+      <uri>file:///home/ros/rmf_ws/custom_maps/Laris_robot_model</uri>
       <pose>14.372152667357495 -31.51393164358252 0 0 0 0</pose>
     </include>
 

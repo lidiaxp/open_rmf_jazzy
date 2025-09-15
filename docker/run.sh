@@ -23,6 +23,7 @@ docker run -it \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   -v /tmp/.docker.xauth:/tmp/.docker.xauth:rw \
   -v $(pwd)/..:/workspace:rw \
+  -v $(pwd)/laris_robot:/home/ros/rmf_ws/src/laris_robot \
   -v $(pwd)/maps:/home/ros/rmf_ws/custom_maps \
   openrmf:latest /bin/bash
 
