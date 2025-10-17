@@ -1,0 +1,64 @@
+# FLEET CONFIG =================================================================
+#### RMF Fleet parameters
+
+rmf_fleet:
+  name: "tb4"
+  limits:
+    linear: [0.7, 1.0]     # [max velocity (m/s), max acceleration (m/s²)]
+    angular: [1.0, 2.0]    # [max angular velocity (rad/s), max angular acceleration (rad/s²)]
+  profile: # Robot profile is modelled as a circle
+    footprint: 0.35        # radius in m (adjust if your robot is larger/smaller)
+    vicinity: 0.6          # radius in m
+  reversible: True
+  battery_system:
+    voltage: 24.0          # V (example, check your battery pack)
+    capacity: 15.0         # Ahr
+    charging_current: 5.0  # A
+  mechanical_system:
+    mass: 25.0             # kg
+    moment_of_inertia: 12.0 # kg·m²
+    friction_coefficient: 0.25
+  ambient_system:
+    power: 25.0            # W idle consumption
+  tool_system:
+    power: 0.0             # W (no tool by default)
+  recharge_threshold: 0.15 # recharge when < 15%
+  recharge_soc: 1.0
+  publish_fleet_state: 10.0
+  account_for_battery_drain: True
+
+  task_capabilities:
+    loop: True
+    delivery: True
+
+  actions: ["teleop"]
+  finishing_request: "park"
+  responsive_wait: True
+  reassign_task_interval: 120
+
+  robots:
+    tb4_1:
+      charger: "dc_door"
+      responsive_wait: False
+
+fleet_manager:
+  ip: "127.0.0.1"
+  port: 22013
+  user: "laris_user"
+  password: "laris_password"
+
+reference_coordinates:
+  rmf:
+    - [14.372152667357495, -31.51393164358252]   # dc_door (RMF)
+    - [20.868068228632303, -31.51393164358252]   # dc_end  (RMF)
+    - [34.268835454231876, -31.604761971572625]  # main_corridor (RMF)
+    - [35.041092869242256,  -6.620333147911803]  # professor_aisle (RMF)
+  robot:
+    - [0, 0]  # dc_door (Nav2 map frame, from RViz)
+    - [6, 0]  # dc_end
+    - [20, 0]  # main_corridor
+    - [21, 25]  # professor_aisle
+
+# reference_coordinates:  
+#   rmf:   [[0,0],[5,0],[0,5],[5,5]]
+#   robot: [[0,0],[5,0],[0,5],[5,5]]

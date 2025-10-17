@@ -1,0 +1,33 @@
+rmf_fleet:
+  name: tb4
+  robot_state_update_frequency: 10.0
+  limits: {linear: [0.7, 1.0], angular: [1.0, 2.0]}
+  profile: {footprint: 0.35, vicinity: 0.6}
+  reversible: true
+  task_capabilities: {loop: true, delivery: false}
+  robots:
+    - name: tb4_1
+      model: turtlebot4
+      start: {level_name: "dc_l2", waypoint: "dc_door"}
+
+fleet_manager:                
+  namespace: ""               
+  odom_topic: "/odom"         
+  cmd_vel_topic: "/cmd_vel"   
+  nav2_action: "/navigate_to_pose"  
+  map_name: "dc_l2"
+  timeout: 5.0
+  debug: false
+
+reference_coordinates:        # ← MUST be keyed by level name
+  dc_l2:
+    rmf:
+      - [14.372152667357495, -31.51393164358252]   # dc_door
+      - [20.868068228632303, -31.51393164358252]   # dc_end
+      - [34.268835454231876, -31.604761971572625]  # main_corridor
+      - [35.041092869242256,  -6.620333147911803]  # professor_aisle
+    robot:
+      - [X1_map, Y1_map]   # SAME physical spots, clicked in RViz (map frame)
+      - [X2_map, Y2_map]
+      - [X3_map, Y3_map]
+      - [X4_map, Y4_map]
