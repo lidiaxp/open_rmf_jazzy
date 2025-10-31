@@ -51,7 +51,7 @@
  
 
   <executable
-    cmd="python3 -m fleet_adapter.fleet_adapter -c $(var config_file) -n $(var nav_graph_file) --ros-args -p use_sim_time:=$(var use_sim_time)"
+    cmd="python3 -m fleet_adapter_.fleet_adapter -c $(var config_file) -n $(var nav_graph_file) --ros-args -p use_sim_time:=$(var use_sim_time)"
     output="both"/>
   <!-- the right is ros-args with 2 - -->
 

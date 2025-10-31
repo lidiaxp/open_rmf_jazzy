@@ -1,0 +1,23 @@
+joy_node:
+  ros__parameters:
+    device_id: 0
+    deadzone: 0.05
+    autorepeat_rate: 20.0
+
+teleop_node:
+  ros__parameters:
+    require_enable_button: false
+
+    # Frente e ré com o analógico direito vertical (eixo 4)
+    axis_linear:
+      x: 4
+    scale_linear:
+      x: -0.5      # negativo para frente, positivo para trás
+
+    # Giro com o analógico esquerdo horizontal (eixo 0)
+    axis_angular:
+      yaw: 0
+    scale_angular:
+      yaw: 0.5
+    scale_angular_turbo:
+      yaw: 1.0

@@ -1,0 +1,23 @@
+teleop
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
+
+source
+
+
+compile
+colcon build --symlink-install
+
+remove
+sudo rm -rf articubot_one
+
+sudo apt purge ros-humble-rmf* && sudo apt autoremove
+
+sudo apt-get update
+sudo apt-get install ros-humble-ros-ign-bridge
+
+
+cmd git
+
+git status
+git add .
+git commit -m "lidar"
