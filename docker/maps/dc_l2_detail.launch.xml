@@ -40,7 +40,7 @@
       <arg name="use_sim_time" value="$(var use_sim_time)"/>
       <arg name="nav_graph_file" value="/home/ros/rmf_ws/custom_maps/maps/0_tb4.yaml" />
       <arg name="config_file" value="/home/ros/rmf_ws/custom_maps/tb4_config_demo.yaml"/>
-    </include>
+    </include> 
   </group> -->
 
   <arg name="use_sim_time" default="$(var use_sim_time)"/>
